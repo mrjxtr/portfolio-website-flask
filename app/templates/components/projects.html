@@ -1,0 +1,18 @@
+<section class="py-20 px-4">
+    <h2 class="text-3xl font-bold text-center mb-12 animate-on-scroll">Projects & Expertise</h2>
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        {% for project in projects %}
+        <div class="project-card bg-gray-800/40 backdrop-blur-sm p-6 rounded-lg hover:bg-gray-750/40 transition-colors border border-gray-700/50">
+            <h3 class="text-xl font-semibold mb-3 text-accent-light">{{ project.title }}</h3>
+            <p class="text-gray-300 mb-4">{{ project.description }}</p>
+            <div class="flex flex-wrap gap-2">
+                {% for tech in project.tech %}
+                <span class="text-sm bg-gray-700/50 backdrop-blur-sm px-3 py-1 rounded-full">
+                    {{ tech }}
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section> 

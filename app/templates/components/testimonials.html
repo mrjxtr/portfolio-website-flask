@@ -1,0 +1,17 @@
+<section class="py-20 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-gray-800/30 to-transparent pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-4 relative">
+        <h2 class="text-3xl font-bold text-center mb-12">Testimonials</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {% for testimonial in testimonials %}
+            <div class="bg-gray-800/40 backdrop-blur-sm p-6 rounded-lg border border-gray-700/50">
+                <p class="text-gray-300 mb-4">"{{ testimonial.text }}"</p>
+                <div>
+                    <p class="font-semibold text-accent-light">{{ testimonial.author }}</p>
+                    <p class="text-sm text-gray-400">{{ testimonial.role }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section> 

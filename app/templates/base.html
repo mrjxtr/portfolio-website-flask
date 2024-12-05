@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}JXTR - Full Stack Developer{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        accent: {
+                            light: '#b794f4',
+                            DEFAULT: '#9f7aea',
+                            dark: '#805ad5',
+                        },
+                        gray: {
+                            750: '#2d374d',
+                            850: '#1a202e',
+                            950: '#0b0f17',
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                    },
+                },
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+            color: #ffffff;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    {% assets "css_all" %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}">
+    {% endassets %}
+</head>
+<body class="min-h-screen">
+    <div class="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none overflow-hidden">
+        <div class="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-gradient-radial from-accent-dark/20 via-transparent to-transparent"></div>
+        <div class="absolute bottom-[-50%] right-[-50%] w-[200%] h-[200%] bg-gradient-radial from-accent-dark/10 via-transparent to-transparent"></div>
+    </div>
+
+    {% include 'components/header.html' %}
+    
+    <main class="relative z-10">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="relative z-10 text-center py-6 text-gray-400">
+        <p>© {{ now.year }} Jester Lumacad. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        feather.replace()
+    </script>
+</body>
+</html> 
